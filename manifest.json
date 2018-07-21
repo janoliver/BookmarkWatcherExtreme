@@ -1,0 +1,43 @@
+{
+
+  "manifest_version": 2,
+  "name": "BookmarkWatcherExtreme",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "id": "bookmark-watcher@oelerich.org"
+    }
+  },
+
+  "description": "Watching bookmarks of the mods.de board.",
+
+  "icons": {
+    "48": "icons/icon.svg"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://forum.mods.de/bb/*"]
+    }
+  ],
+  "permissions": [
+    "notifications",
+    "tabs",
+    "*://forum.mods.de/bb/*"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "icons/icon.svg",
+      "38": "icons/icon.svg"
+    },
+    "default_title": "BookmarkWatcherExtreme",
+    "default_popup": "popup/choose_action.html",
+    "browser_style": true
+  },
+  "background": {
+    "scripts": [
+      "background/index.js"
+    ]
+  }
+
+}

@@ -1,0 +1,58 @@
+html, body {
+    /*width: 300px;*/
+    margin:0;
+    padding:0;
+}
+
+.hidden {
+    display: none;
+}
+
+#not-logged-in {
+    padding:10px;
+}
+
+ul {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+li {
+    padding:0;
+    margin:0;
+}
+
+li a {
+    padding:5px;
+    margin:0;
+    text-decoration:none;
+    color:#000;
+    display:block;
+}
+
+li a .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+li a .unread-count {
+    float:right;
+    background: #333;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.8em;
+    min-width: 20px;
+    padding: 2px;
+    text-align: center;
+}
+
+li a:hover {
+    background-color: #eee;
+}
+
+li.template {
+    display:none;
+}
