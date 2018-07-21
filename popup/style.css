@@ -10,6 +10,7 @@ html, body {
 
 #not-logged-in {
     padding:10px;
+    display:none;
 }
 
 ul {

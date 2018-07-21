@@ -1,8 +1,9 @@
 $( document ).ready(function() {
-    
+
     $("#bookmarks-list").on("click", "a", function(e) {
         e.preventDefault();
         var href = $(this).attr("href");
+        var browser = browser || chrome;
         browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
             var tab = tabs[0];
             browser.tabs.update(tab.id, {url: href});
@@ -27,15 +28,14 @@ $( document ).ready(function() {
         $("#bookmarks-list").append(new_element);
     }
 
-    var getting = browser.runtime.getBackgroundPage();
-    getting.then(function(page) {
-        clearList();
+    function fillPopup(page) {
 
         if(page.bookmarks == null) {
             $("#bookmarks-list").hide();
             $("#not-logged-in").show();
             return;
         }
+        clearList();
 
         var bm_unread = [];
         var bm_read = [];
@@ -57,8 +57,15 @@ $( document ).ready(function() {
             var tid = parseInt(bookmark.children[0].getAttribute("TID"));
             appendBookmark(title, unread_count, tid, pid);
         }
-    }, function(error) {
-        console.log(`Error: ${error}`);
-    });
+    }
+
+    if (typeof browser !== 'undefined') {
+        var getting = browser.runtime.getBackgroundPage();
+        getting.then(function(page) {
+            fillPopup(page);
+        });
+    } else {
+        chrome.runtime.getBackgroundPage(fillPopup)
+    }
 
 });
