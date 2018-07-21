@@ -11,6 +11,9 @@ function reload() {
             bookmarks = null;
         } else {
             bookmarks = xhr.responseXML.getElementsByTagName("bookmark");
+            var newposts = parseInt(xhr.responseXML.firstChild.getAttribute("newposts"));
+            var browser = browser || chrome;
+            browser.browserAction.setBadgeText({text: ""+newposts});
         }
         setTimeout(reload, 2000);
     }
