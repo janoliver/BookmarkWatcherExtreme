@@ -13,7 +13,10 @@ function reload() {
             bookmarks = xhr.responseXML.getElementsByTagName("bookmark");
             var newposts = parseInt(xhr.responseXML.firstChild.getAttribute("newposts"));
             var browser = browser || chrome;
-            browser.browserAction.setBadgeText({text: ""+newposts});
+            var badgetext = ""+newposts;
+            if(newposts == 0)
+                badgetext = "";
+            browser.browserAction.setBadgeText({text: badgetext});
         }
         setTimeout(reload, 2000);
     }
