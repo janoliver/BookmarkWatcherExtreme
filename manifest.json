@@ -1,23 +1,20 @@
 {
 
   "manifest_version": 2,
-  "name": "BookmarkWatcherExtreme",
+  "name": "mods.de Bookmark Trecker",
   "version": "1.0",
   "applications": {
     "gecko": {
-      "id": "bookmark-watcher@oelerich.org"
+      "id": "bookmark-trecker@oelerich.org"
     }
   },
-
-  "description": "Watching bookmarks of the mods.de board.",
-
+  "description": "Tracking bookmarks of the mods.de boards.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "notifications",
     "tabs",
     "*://forum.mods.de/bb/*"
   ],
@@ -26,8 +23,8 @@
       "19": "/icons/icon19.png",
       "38": "/icons/icon38.png"
     },
-    "default_title": "BookmarkWatcherExtreme",
-    "default_popup": "popup/choose_action.html",
+    "default_title": "Bookmark Trecker",
+    "default_popup": "popup/popup.html",
     "browser_style": true
   },
   "background": {
@@ -35,5 +32,4 @@
       "background/index.js"
     ]
   }
-
 }
