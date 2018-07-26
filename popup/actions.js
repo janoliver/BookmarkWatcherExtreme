@@ -12,8 +12,10 @@ $( document ).ready(function() {
     });
     
     function clearList() {
-        var save = $("#bookmarks-list .template").detach();
-        $('#bookmarks-list').empty().append(save);
+        var save1 = $("#bookmarks-list .template").detach();
+        var save2 = $("#bookmarks-list .pms").detach();
+        $('#bookmarks-list').empty().append(save2);
+        $('#bookmarks-list').append(save1);
     }
 
     function appendBookmark(title, unread_count, tid, pid) {
@@ -30,12 +32,25 @@ $( document ).ready(function() {
 
     function fillPopup(page) {
 
-        if(page.bookmarks == null) {
+        if(page.bookmarks_code === page.CODE_NOT_LOGGED_IN) {
             $("#bookmarks-list").hide();
             $("#not-logged-in").show();
             return;
         }
+        console.log(page.CODE_TIMEOUT);
+        if(page.bookmarks_code === page.CODE_TIMEOUT) {
+            $("#bookmarks-list").hide();
+            $("#network-error").show();
+            return;
+        }
         clearList();
+
+        if(page.new_pms > 0) {
+            $("#bookmarks-list .pms .unread-count").text(page.new_pms)
+            $("#bookmarks-list .pms").show();
+        } else {
+            $("#bookmarks-list .pms").hide();
+        }
 
         var bm_unread = [];
         var bm_read = [];
